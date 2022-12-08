@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SPROUTEXAM.Infrastructure\SPROUTEXAM.Infrastructure.csproj" />
+    <ProjectReference Include="..\SPROUTEXAM.Domain\SPROUTEXAM.Domain.csproj" />
+    <ProjectReference Include="..\SPROUTEXAM.Services\SPROUTEXAM.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="FluentValidation" Version="10.3.3" />
+    <PackageReference Include="IdentityModel" Version="5.1.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="NJsonSchema" Version="10.5.2" />
+  </ItemGroup>
+
+</Project>
