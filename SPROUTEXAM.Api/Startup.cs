@@ -39,7 +39,7 @@ namespace SPROUTEXAM.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, NetCoreDbContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SproutExamDbContext context)
         {
             app.UseCors("default");
             app.UseForwardedHeaders(new ForwardedHeadersOptions

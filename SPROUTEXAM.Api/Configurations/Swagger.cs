@@ -13,9 +13,9 @@ namespace SPROUTEXAM.Api.Configurations
             services.AddOpenApiDocument(c =>
             {
                 c.DocumentName = "v1";
-                c.Title = "SPROUTEXAM BOILERPLATE V1";
+                c.Title = "SPROUTEXAM";
                 c.Version = "v1";
-                c.Description = "RESTFul Api for NETCOIRE BOILERPLATE V1";
+                c.Description = "RESTFul Api for Sprout Exam";
 
                 c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
                 {
@@ -38,7 +38,7 @@ namespace SPROUTEXAM.Api.Configurations
                 {
                     document.Info.Contact = new OpenApiContact
                     {
-                        Name = "SPROUTEXAM BOILERPLATE",
+                        Name = "SPROUT EXAM",
                         Email = string.Empty,
                         Url = "http://yourwebsite.com"
                     };

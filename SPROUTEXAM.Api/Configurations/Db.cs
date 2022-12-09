@@ -12,13 +12,13 @@ namespace SPROUTEXAM.Api.Configurations
         {
             var connectionString = configuration.GetConnectionString("Default");
 
-            services.AddDbContext<NetCoreDbContext>(opts =>
+            services.AddDbContext<SproutExamDbContext>(opts =>
             {
                 opts.UseSqlServer(connectionString);
             });
         }
 
-        internal static void ConfigureDatabaseMigrations(NetCoreDbContext context)
+        internal static void ConfigureDatabaseMigrations(SproutExamDbContext context)
         {
             //Check if there are any pending migrations
             if (context.Database.GetPendingMigrations().Any())
@@ -27,7 +27,7 @@ namespace SPROUTEXAM.Api.Configurations
             }
         }
 
-        internal static void SeedDatabase(NetCoreDbContext context)
+        internal static void SeedDatabase(SproutExamDbContext context)
         {
             // Seed Database
         }
