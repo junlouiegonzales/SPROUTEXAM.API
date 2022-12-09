@@ -21,10 +21,10 @@ If you want to learn more about creating good readme files then refer the follow
 
 # Migration
 ## List all available migration
-cd SPROUTEXAM.Api && dotnet ef migrations list --startup-project SPROUTEXAM.Api.csproj --context "NetCoreDbContext" --project ../SPROUTEXAM.Persistence/SPROUTEXAM.Infrastructure.csproj --msbuildprojectextensionspath obj/local/
+cd SPROUTEXAM.Api && dotnet ef migrations list --startup-project SPROUTEXAM.Api.csproj --context "SproutDbContext" --project ../SPROUTEXAM.Persistence/SPROUTEXAM.Infrastructure.csproj 
 
 ## Update database to specific migration
-cd SPROUTEXAM.Api && dotnet ef database update 1.0.0.0 --startup-project SPROUTEXAM.Api.csproj --context "NetCoreDbContext" --project ../SPROUTEXAM.Persistence/SPROUTEXAM.Infrastructure.csproj --msbuildprojectextensionspath obj/local/
+cd SPROUTEXAM.Api && dotnet ef database update 1.0.0.0 --startup-project SPROUTEXAM.Api.csproj --context "SproutDbContext" --project ../SPROUTEXAM.Persistence/SPROUTEXAM.Infrastructure.csproj 
 
 ## Create Migration
-cd SPROUTEXAM.Api && dotnet ef migrations add 1.0.0.1  --startup-project SPROUTEXAM.Api.csproj --context "NetCoreDbContext" --output-dir ./Migrations --project ../SPROUTEXAM.Persistence/SPROUTEXAM.Infrastructure.csproj --msbuildprojectextensionspath obj/local/
+cd SPROUTEXAM.Api && dotnet ef migrations add 1.0.0.0  --startup-project SPROUTEXAM.Api.csproj --context "SproutDbContext" --output-dir ./Migrations --project ../SPROUTEXAM.Persistence/SPROUTEXAM.Infrastructure.csproj 

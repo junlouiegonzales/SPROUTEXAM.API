@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SPROUTEXAM.Domain.Entities;
 
 namespace SPROUTEXAM.Infrastructure.Context
 {
-    public abstract class SproutExamBasedDbContext : DbContext
+    public abstract class SproutExamBasedDbContext : IdentityDbContext<UserAccount>
     {
         protected SproutExamBasedDbContext(DbContextOptions<SproutExamDbContext> options)
                 : base(options)

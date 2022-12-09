@@ -4,10 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SPROUTEXAM.Infrastructure.Context;
-using Microsoft.AspNetCore.HttpOverrides;
 using static SPROUTEXAM.Api.Configurations.Db;
 using static SPROUTEXAM.Api.Configurations.Mvc;
-using static SPROUTEXAM.Api.Configurations.CORS;
+using static SPROUTEXAM.Api.Configurations.Security;
 using static SPROUTEXAM.Api.Configurations.MediatR;
 using static SPROUTEXAM.Api.Configurations.Swagger;
 using static SPROUTEXAM.Api.Configurations.Services;
@@ -15,7 +14,7 @@ using static SPROUTEXAM.Api.Configurations.AutoMapper;
 using static SPROUTEXAM.Api.Configurations.FluentValidation;
 namespace SPROUTEXAM.Api
 {
-    public class Startup
+  public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -35,21 +34,16 @@ namespace SPROUTEXAM.Api
             RegisterServices(services, Configuration);
             IMvcBuilder mvcBuilder = RegisterMvc(services);
             AddFluentValidation(mvcBuilder);
-            AddCorsPolicy(services, Configuration);
+            RegisterSecurity(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SproutExamDbContext context)
         {
-            app.UseCors("default");
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
-
             ConfigureSwagger(app);
             ConfigureMvc(app);
             ConfigureDatabaseMigrations(context);
+            ConfigureSecurity(app);
 
             if (env.IsDevelopment())
             {

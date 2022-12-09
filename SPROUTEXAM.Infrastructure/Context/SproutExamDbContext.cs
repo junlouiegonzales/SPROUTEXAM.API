@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +5,7 @@ using SPROUTEXAM.Domain.Entities;
 
 namespace SPROUTEXAM.Infrastructure.Context
 {
-    public class SproutExamDbContext : SproutExamBasedDbContext
+  public class SproutExamDbContext : SproutExamBasedDbContext
     {
         public SproutExamDbContext(DbContextOptions<SproutExamDbContext> options) : base(options)
         {

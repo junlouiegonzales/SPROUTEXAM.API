@@ -11,10 +11,11 @@ namespace SPROUTEXAM.Api.Configurations
             services.AddAutoMapper(
                 configAction =>
                 {
-                    configAction.ValidateInlineMaps = false;
+                    //configAction.ValidateInlineMaps = false;
                 },
                 typeof(Application.Response)
                 );
+                
         }
     }
 }
