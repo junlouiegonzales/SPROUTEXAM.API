@@ -10,6 +10,7 @@ using EmployeeQuery = SPROUTEXAM.Application.Employee.Queries;
 
 namespace SPROUTEXAM.Api.Controllers
 {
+  [Route("api/employee")]
   public class EmployeeController : BaseController
   {
     [HttpGet()]

@@ -26,14 +26,13 @@ namespace SPROUTEXAM.Api.Configurations
         internal static void ConfigureMvc (IApplicationBuilder app) 
         {
             app.UseRouting();
-            //app.UseHttpsRedirection();
-            app.UseAuthentication(); //API AUTH
-            app.UseAuthorization(); //CORS 
+            app.UseHttpsRedirection();
             app.UseEndpoints(endpoints =>
             { 
-                endpoints
-                .MapDefaultControllerRoute()
-                .RequireAuthorization();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

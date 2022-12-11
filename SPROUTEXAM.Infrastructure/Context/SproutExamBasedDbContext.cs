@@ -1,13 +1,16 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SPROUTEXAM.Domain.Entities;
+using IdentityServer4.EntityFramework.Options;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 
 namespace SPROUTEXAM.Infrastructure.Context
 {
-    public abstract class SproutExamBasedDbContext : IdentityDbContext<UserAccount>
+    public abstract class SproutExamBasedDbContext : ApiAuthorizationDbContext<UserAccount>
     {
-        protected SproutExamBasedDbContext(DbContextOptions<SproutExamDbContext> options)
-                : base(options)
+        protected SproutExamBasedDbContext(DbContextOptions<SproutExamDbContext> options, IOptions<OperationalStoreOptions> operationalStoreOptions)
+                : base(options, operationalStoreOptions)
         {
         }
 

@@ -9,7 +9,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/SPROUTEXAM.Api/SPROUTEXAM.Api.csproj",
+                "${workspaceFolder}/SPROUTEXAM/SPROUTEXAM.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -25,7 +25,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/SPROUTEXAM.Api/SPROUTEXAM.Api.csproj",
+                "${workspaceFolder}/SPROUTEXAM/SPROUTEXAM.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -38,7 +38,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/SPROUTEXAM.Api/SPROUTEXAM.Api.csproj",
+                "${workspaceFolder}/SPROUTEXAM/SPROUTEXAM.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

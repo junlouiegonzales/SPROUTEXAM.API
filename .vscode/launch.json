@@ -15,10 +15,10 @@
         "internalConsoleOptions": "openOnSessionStart",
         "launchBrowser": {
             "enabled": true,
-            "args": "${auto-detect-url}/swagger",
+            "args": "${auto-detect-url}",
             "windows": {
                 "command": "cmd.exe",
-                "args": "/C start ${auto-detect-url}/swagger"
+                "args": "/C start ${auto-detect-url}"
             },
             "osx": {
                 "command": "open"
@@ -33,5 +33,33 @@
         "sourceFileMap": {
             "/Views": "${workspaceFolder}/Views"
         }
-    }]
+    },{
+      "name": "Launch SPROUTEXAM",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/SPROUTEXAM/bin/Debug/net5.0/SPROUTEXAM.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/SPROUTEXAM",
+      "stopAtEntry": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "launchBrowser": {
+          "enabled": true,
+          "args": "${auto-detect-url}",
+          "windows": {
+              "command": "cmd.exe",
+              "args": "/C start ${auto-detect-url}"
+          },
+          "osx": {
+              "command": "open"
+          },
+          "linux": {
+              "command": "xdg-open"
+          }
+      },
+      "sourceFileMap": {
+          "/Views": "${workspaceFolder}/Views"
+      }
+  }]
+    
 }

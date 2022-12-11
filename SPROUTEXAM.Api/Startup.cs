@@ -27,23 +27,25 @@ namespace SPROUTEXAM.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
             RegisterEntityFramework(services, Configuration);
             RegisterSwagger(services);
             RegisterMediatR(services);
             RegisterAutoMapper(services);
             RegisterServices(services, Configuration);
+            
+                        RegisterSecurity(services, Configuration);
             IMvcBuilder mvcBuilder = RegisterMvc(services);
-            AddFluentValidation(mvcBuilder);
-            RegisterSecurity(services, Configuration);
+            AddFluentValidation(mvcBuilder);  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SproutExamDbContext context)
         {
-            ConfigureSwagger(app);
-            ConfigureMvc(app);
             ConfigureDatabaseMigrations(context);
             ConfigureSecurity(app);
+            ConfigureSwagger(app);
+            ConfigureMvc(app);
 
             if (env.IsDevelopment())
             {

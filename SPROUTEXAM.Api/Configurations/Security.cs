@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SPROUTEXAM.Domain.Entities;
 using SPROUTEXAM.Infrastructure.Context;
 
 namespace SPROUTEXAM.Api.Configurations
@@ -25,9 +27,21 @@ namespace SPROUTEXAM.Api.Configurations
       });
       services.AddControllers();
 
-      // Identity
-      services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-              .AddEntityFrameworkStores<SproutExamDbContext>();
+      services.AddDefaultIdentity<UserAccount>(options => 
+      {
+        options.SignIn.RequireConfirmedAccount = true;
+      })
+      .AddEntityFrameworkStores<SproutExamDbContext>();
+
+      services.AddIdentityServer(options => {
+          options.UserInteraction.LoginUrl = "/Login";
+          options.UserInteraction.LogoutUrl = "/Logout";
+          options.UserInteraction.ErrorUrl = "/Error";
+      })
+      .AddApiAuthorization<UserAccount, SproutExamDbContext>();
+
+      services.AddAuthentication()
+          .AddIdentityServerJwt();
     }
 
     internal static void ConfigureSecurity(IApplicationBuilder app)
@@ -38,7 +52,6 @@ namespace SPROUTEXAM.Api.Configurations
         ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
       });
 
-      // Identity
       app.UseAuthentication();
       app.UseIdentityServer();
       app.UseAuthorization();
