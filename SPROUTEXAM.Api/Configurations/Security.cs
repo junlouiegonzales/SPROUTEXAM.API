@@ -14,20 +14,9 @@ namespace SPROUTEXAM.Api.Configurations
   {
     internal static void RegisterSecurity(IServiceCollection services, IConfiguration configuration)
     {
-      var corsOptions = new CorsOptions();
-      configuration.GetSection("Cors").Bind(corsOptions);
-
-      services.AddCors(options =>
-      {
-        options.AddPolicy("default", policy => policy
-                  .WithOrigins(corsOptions.AllowedOrigins.ToArray())
-                  .AllowAnyHeader()
-                  .AllowAnyMethod()
-                  );
-      });
       services.AddControllers();
 
-      services.AddDefaultIdentity<UserAccount>(options => 
+      services.AddDefaultIdentity<IdentityUser>(options => 
       {
         options.SignIn.RequireConfirmedAccount = true;
       })
@@ -42,6 +31,18 @@ namespace SPROUTEXAM.Api.Configurations
 
       services.AddAuthentication()
           .AddIdentityServerJwt();
+
+      var corsOptions = new CorsOptions();
+      configuration.GetSection("Cors").Bind(corsOptions);
+
+      services.AddCors(options =>
+      {
+        options.AddPolicy("default", policy => policy
+                  .WithOrigins(corsOptions.AllowedOrigins.ToArray())
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  );
+      });
     }
 
     internal static void ConfigureSecurity(IApplicationBuilder app)
@@ -53,7 +54,6 @@ namespace SPROUTEXAM.Api.Configurations
       });
 
       app.UseAuthentication();
-      app.UseIdentityServer();
       app.UseAuthorization();
     }
   }

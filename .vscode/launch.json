@@ -38,9 +38,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/SPROUTEXAM/bin/Debug/net5.0/SPROUTEXAM.dll",
+      "program": "${workspaceFolder}/SPROUTEXAM.Presentation/bin/Debug/net6.0/SPROUTEXAM.Presentation.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/SPROUTEXAM",
+      "cwd": "${workspaceFolder}/SPROUTEXAM.Presentation",
       "stopAtEntry": false,
       "internalConsoleOptions": "openOnSessionStart",
       "launchBrowser": {
